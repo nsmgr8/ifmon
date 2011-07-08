@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/share/ifmon/main.pyc
+GenericName[en_US]=Bandwidth Monitor
+GenericName=Bandwidth Monitor
+Icon=/usr/share/ifmon/ifmon.png
+MimeType=
+Name[en_US]=ifmon
+Name=ifmon
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
