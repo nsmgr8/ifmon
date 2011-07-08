@@ -35,10 +35,9 @@ Ubuntu (>= Lucid)
 
 The source distribution includes a install script for Ubuntu (including Lucid
 and greater). To install it just open up a terminal and run the following
-commands.
+commands.::
 
     $ cd ~/Downloads/ifmon/
-
     $ sudo python install_ubuntu.py
 
 This will install all the dependencies and ifmon itself. After a successful
@@ -55,19 +54,14 @@ package manager.
     2. python SQLObject > 0.7
 
 After satisfying the requirements you can either double click the **main.py**
-file or run it from the commandline via
+file or run it from the commandline via::
 
     $ cd ~/Downloads/ifmon
+    $ sudo python install_other.py
 
-    $ python main.py
-
-However, you also need to add a cron job for capturing the regular monitoring
-of the network usage. Without setting this cron job, this software is more or
-less useless. There is an example cron job file called __ifmon.cron__
-distributed with the bundle. You need to put this job in your crontab or copy
-the file to a /etc/cron.d/ folder if it exists. Of course, you need to modify
-the path of the **ifmon.py** file in the job to your downloaded/installed
-location.
+Note that, this installation also assumes that your OS uses cron job and a
+folder for job listing exists at **/etc/cron.d/**. If this is not true for your
+system, please try some other method of scheduling **ifmon.py** in your system.
 
 Bug Report/Feature Request
 --------------------------
