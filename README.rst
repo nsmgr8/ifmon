@@ -72,7 +72,7 @@ location.
 Bug Report/Feature Request
 --------------------------
 
-Please use this `github issue page <https://github.com/nsmgr8/ifmon/issues>`
+Please use this `github issue page <https://github.com/nsmgr8/ifmon/issues>`_
 for the bug reports and feature requests. Thanks. 
 
 License
@@ -103,4 +103,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+.. _github: https://github.com/nsmgr8/ifmon
 
