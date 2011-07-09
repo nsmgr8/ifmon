@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/bin/ifmon
+GenericName[en_US]=ifmon
+GenericName=ifmon
+Icon=/usr/share/ifmon/resources/ifmon.png
+MimeType=
+Name[en_US]=Bandwidth Monitor
+Name=Bandwidth Monitor
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application

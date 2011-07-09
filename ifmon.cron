@@ -1,5 +1,0 @@
-#
-# save network usage at every minute
-#
-*/1 * * * * root python /usr/share/ifmon/ifmon.pyc
-

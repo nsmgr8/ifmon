@@ -11,8 +11,8 @@ from datetime import datetime, timedelta
 from PySide.QtCore import (Qt, QAbstractTableModel)
 
 from sqlobject import AND
-from ifmon import Bandwidth, Settings, save_data
-from utils import smart_bytes
+from ifmon.ifmon import Bandwidth, Settings, save_data
+from ifmon.utils import smart_bytes
 
 class BandwidthTableModel(QAbstractTableModel):
 

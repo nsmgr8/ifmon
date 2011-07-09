@@ -17,7 +17,7 @@ from sqlobject import dberrors
 from ui_mainwindow import Ui_MainWindow
 from aboutdialog import AboutDialog
 from tablemodel import BandwidthTableModel
-from utils import smart_bytes
+from ifmon.utils import smart_bytes
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -97,4 +97,4 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def about(self):
         AboutDialog(self).exec_()
 
-import resources
+import resources.resources

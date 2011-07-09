@@ -9,11 +9,15 @@
 #
 
 import sys
+import os
+
+pkgpath = os.path.dirname(os.path.realpath(__file__))
+sys.path.insert(0, pkgpath)
 
 from PySide.QtGui import QApplication, QMessageBox
 
-from mainwindow import MainWindow
-from ifmon import setup_db
+from gui.mainwindow import MainWindow
+from ifmon.ifmon import setup_db
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

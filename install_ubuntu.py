@@ -9,63 +9,74 @@
 #
 
 import os
-import apt
 import subprocess
 import glob
 import shutil
-import py_compile
+import compileall
 import stat
 import sys
 
-from utils import smart_bytes
+from ifmon.utils import smart_bytes
 
 install_path = '/usr/share/ifmon'
-main_pyc = os.path.join(install_path, 'main.pyc')
-pngfile = os.path.join(install_path, 'ifmon.png')
-cronfile = '/etc/cron.d/ifmon'
+mainfile = os.path.join(install_path, 'main.pyc')
 binfile = '/usr/bin/ifmon'
-desktop_launcher = os.path.expanduser('~/Desktop/ifmon.desktop')
-dbpath = os.path.join(install_path, 'db/ifmon.db')
+cronsrc = os.path.join(install_path, 'resources/ifmon.cron')
+cronfile = '/etc/cron.d/ifmon'
+desktop_src = os.path.join(install_path, 'resources/ifmon.desktop')
+desktop_target = os.path.expanduser('~/Desktop/ifmon.desktop')
+dbpath = os.path.join(install_path, 'ifmon/db/ifmon.db')
 
 def install_ifmon():
-    for f in [install_path, os.path.dirname(dbpath)]:
-        if not os.path.exists(f):
-            try:
-                os.makedirs(f)
-            except OSError as e:
-                print 'Warning: %s' % e
+    pkgpath = os.path.dirname(os.path.abspath(__file__))
+    if os.path.exists(install_path):
+        try:
+            shutil.rmtree(install_path)
+        except OSError as e:
+            print 'Warning: %s' % e
 
-    pyfiles = [f for f in glob.glob('*.py') if not f.startswith('install')]
-    installed_py = [os.path.join(install_path, f) for f in pyfiles]
-    for src, dest in zip(pyfiles, installed_py):
-        shutil.copyfile(src, dest)
-        py_compile.compile(dest)
-        os.remove(dest)
+    shutil.copytree(pkgpath, install_path)
+    gitpath = os.path.join(install_path, '.git')
+    if os.path.exists(gitpath):
+        shutil.rmtree(gitpath)
+    compileall.compile_dir(install_path)
 
-    shutil.copyfile('ifmon.png', pngfile)
-    shutil.copyfile('ifmon.desktop', desktop_launcher)
-    shutil.copyfile('ifmon.cron', cronfile)
+    def callback(arg, directory, files):
+        print arg
+        for f in files:
+            if any([f.endswith(ext) for ext in ('.py', '.ui', '.qrc')]):
+                os.remove(os.path.join(directory, f))
 
-    try:
-        with file(dbpath, 'r'):
-            print 'Using an exisiting database.'
-    except IOError:
-        with file(dbpath, 'w'):
+    os.path.walk(install_path, callback, "cleanup install folder")
+
+    files = glob.glob(install_path + "/install*.pyc")
+    for f in files:
+        os.remove(os.path.join(install_path, f))
+
+    symlinks = [(mainfile, binfile), (cronsrc, cronfile),]
+    for f, s in symlinks:
+        if os.path.exists(s):
+            os.remove(s)
+        os.symlink(f, s)
+
+    shutil.copyfile(desktop_src, desktop_target)
+
+    if not os.path.exists(dbpath):
+        if not os.path.exists(os.path.dirname(dbpath)):
+            os.makedirs(os.path.dirname(dbpath))
+        with open(dbpath, 'w'):
             pass
 
     permission = stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR | stat.S_IRGRP | \
                  stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH | stat.S_IWOTH | \
                  stat.S_IWGRP
-    os.chmod(desktop_launcher, permission)
-    os.chmod(main_pyc, permission)
-    os.chmod(os.path.dirname(dbpath), permission)
+    os.chmod(desktop_target, permission)
+    os.chmod(mainfile, permission)
     os.chmod(dbpath, permission)
-
-    if os.path.exists(binfile):
-        os.remove(binfile)
-    os.symlink(main_pyc, binfile)
+    os.chmod(os.path.dirname(dbpath), permission)
 
 def install_deps():
+    import apt
     if not os.environ['USER'] == 'root':
         print 'ERROR: This program requires root access.'
         print 'Use `sudo python %s`' % sys.argv[0]
@@ -144,7 +155,7 @@ def uninstall():
     except OSError as e:
         print 'Warning: %s' % e
 
-    for f in [binfile, desktop_launcher, cronfile]:
+    for f in [binfile, desktop_target, cronfile]:
         if os.path.exists(f):
             os.remove(f)
 
