@@ -59,7 +59,6 @@ def install_ifmon():
             os.remove(s)
         os.symlink(f, s)
 
-    shutil.copyfile(desktop_src, desktop_target)
 
     if not os.path.exists(dbpath):
         if not os.path.exists(os.path.dirname(dbpath)):
@@ -70,10 +69,15 @@ def install_ifmon():
     permission = stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR | stat.S_IRGRP | \
                  stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH | stat.S_IWOTH | \
                  stat.S_IWGRP
-    os.chmod(desktop_target, permission)
     os.chmod(mainfile, permission)
     os.chmod(dbpath, permission)
     os.chmod(os.path.dirname(dbpath), permission)
+
+    try:
+        shutil.copyfile(desktop_src, desktop_target)
+        os.chmod(desktop_target, permission)
+    except IOError as e:
+        print "Could not create a desktop shortcut", e
 
 def install_deps():
     import apt
