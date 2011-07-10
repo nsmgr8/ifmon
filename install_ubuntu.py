@@ -24,7 +24,7 @@ binfile = '/usr/bin/ifmon'
 cronsrc = os.path.join(install_path, 'resources/ifmon.cron')
 cronfile = '/etc/cron.d/ifmon'
 desktop_src = os.path.join(install_path, 'resources/ifmon.desktop')
-desktop_target = os.path.expanduser('~/Desktop1/ifmon.desktop')
+desktop_target = os.path.expanduser('~/Desktop/ifmon.desktop')
 dbpath = os.path.join(install_path, 'ifmon/db/ifmon.db')
 
 def install_ifmon():
