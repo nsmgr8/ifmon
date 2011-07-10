@@ -19,9 +19,9 @@ Gnome (Ubuntu)
 Requirements
 ============
 
-This is built on PySide - a python binding for Qt4 by Nokia. A Qt4 runtime
-along with a python installation is required. It also requires SQLObject, a
-python based ORM.
+This is built on PyQt4 - a python binding for Qt4. A Qt4 runtime along with a
+python installation is required. It also requires SQLObject, a python based
+ORM.
 
 Installation
 ============
@@ -50,7 +50,7 @@ Other Linux
 For other linux distributions you need to install the following from your
 package manager.
 
-    1. pyside >= 1.0.3
+    1. pyqt4 >= 4.6
     2. python SQLObject > 0.7
 
 After satisfying the requirements you can either double click the **main.py**
