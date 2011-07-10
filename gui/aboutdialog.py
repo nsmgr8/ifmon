@@ -6,7 +6,7 @@
 #   MIT license
 #
 
-from PySide.QtGui import QDialog, QPixmap
+from PyQt4.QtGui import QDialog, QPixmap
 
 from ui_aboutdialog import Ui_AboutDialog
 

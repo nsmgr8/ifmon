@@ -8,7 +8,7 @@
 
 from datetime import datetime, timedelta
 
-from PySide.QtCore import (Qt, QAbstractTableModel)
+from PyQt4.QtCore import (Qt, QAbstractTableModel)
 
 from sqlobject import AND
 from ifmon.ifmon import Bandwidth, Settings, save_data

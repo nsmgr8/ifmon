@@ -2,16 +2,21 @@
 
 # Form implementation generated from reading ui file 'aboutdialog.ui'
 #
-# Created: Fri Jul  8 22:55:55 2011
-#      by: pyside-uic 0.2.9 running on PySide 1.0.3
+# Created: Sun Jul 10 16:33:00 2011
+#      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
 
-from PySide import QtCore, QtGui
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    _fromUtf8 = lambda s: s
 
 class Ui_AboutDialog(object):
     def setupUi(self, AboutDialog):
-        AboutDialog.setObjectName("AboutDialog")
+        AboutDialog.setObjectName(_fromUtf8("AboutDialog"))
         AboutDialog.resize(600, 400)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -25,22 +30,22 @@ class Ui_AboutDialog(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label.setFont(font)
-        self.label.setObjectName("label")
+        self.label.setObjectName(_fromUtf8("label"))
         self.label_2 = QtGui.QLabel(AboutDialog)
         self.label_2.setGeometry(QtCore.QRect(191, 85, 75, 17))
-        self.label_2.setObjectName("label_2")
+        self.label_2.setObjectName(_fromUtf8("label_2"))
         self.textEdit = QtGui.QTextEdit(AboutDialog)
         self.textEdit.setEnabled(True)
         self.textEdit.setGeometry(QtCore.QRect(9, 150, 581, 241))
         self.textEdit.setReadOnly(True)
-        self.textEdit.setObjectName("textEdit")
+        self.textEdit.setObjectName(_fromUtf8("textEdit"))
         self.labelIcon = QtGui.QLabel(AboutDialog)
         self.labelIcon.setEnabled(True)
         self.labelIcon.setGeometry(QtCore.QRect(10, 10, 128, 128))
-        self.labelIcon.setText("")
-        self.labelIcon.setPixmap(QtGui.QPixmap("ifmon.png"))
+        self.labelIcon.setText(_fromUtf8(""))
+        self.labelIcon.setPixmap(QtGui.QPixmap(_fromUtf8("ifmon.png")))
         self.labelIcon.setScaledContents(True)
-        self.labelIcon.setObjectName("labelIcon")
+        self.labelIcon.setObjectName(_fromUtf8("labelIcon"))
 
         self.retranslateUi(AboutDialog)
         QtCore.QMetaObject.connectSlotsByName(AboutDialog)

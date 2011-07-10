@@ -9,8 +9,8 @@
 from datetime import timedelta, datetime
 import sys
 
-from PySide.QtCore import Qt, QTimer
-from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
+from PyQt4.QtCore import Qt, QTimer
+from PyQt4.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
 
 from sqlobject import dberrors
 

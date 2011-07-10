@@ -16,8 +16,8 @@ you need to confirm before proceeding. This installation will only place this
 package in desired folders. To run this software, you must satisfy all the
 requirements. i.e., you must have
 
-    PySide>=1.0.3 and
-    SQLObeject>=0.7
+    PyQt4 >= 4.6 and
+    SQLObeject >= 0.7
 
 installed in your system.
 

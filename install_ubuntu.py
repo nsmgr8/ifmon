@@ -9,7 +9,6 @@
 #
 
 import os
-import subprocess
 import glob
 import shutil
 import compileall
@@ -89,37 +88,27 @@ def install_deps():
     inst_progress = apt.progress.base.InstallProgress()
 
     cache = apt.Cache(apt.progress.text.OpProgress())
-    qtgui = 'python-pyside.qtgui'
+    pyqt4 = 'python-qt4'
     sqlobj = 'python-sqlobject'
-    version = {qtgui: '1.0.3', sqlobj: '0.7'}
+    version = {pyqt4: '4.6', sqlobj: '0.7'}
     is_installed = {}
-    for p in (qtgui, sqlobj):
+    for p in (pyqt4, sqlobj):
         is_installed[p] = cache[p].is_installed and \
                           check_version(cache[p], version[p])
 
-    if not is_installed[qtgui]:
+    if not is_installed[pyqt4]:
+        cache.update(acq_progress)
+        cache.open()
+        cache.commit(acq_progress, inst_progress)
+        if not check_version(cache[pyqt4], version[pyqt4]):
+            print 'ERROR: Could not find required pyqt4 package.'
+            print 'You might try changing to main repository server.'
+            raise SystemExit(1)
+
+        cache[pyqt4].mark_install()
+    elif not check_version(cache[pyqt4], version[pyqt4]):
         print "It requires ", version
-        print 'Do you want to install it from PPA? (Y/n)',
-        if raw_input() == 'n':
-            print 'ERROR: Could not install it. Quitting...'
-            raise SystemExit(1)
-
-        command = 'add-apt-repository ppa:pyside'.split()
-        try:
-            subprocess.check_call(command)
-            cache.update(acq_progress)
-            cache.open()
-            cache.commit(acq_progress, inst_progress)
-            if not check_version(cache[qtgui], version[qtgui]):
-                print 'ERROR: Could not find required pyside package.'
-                print 'You might try changing to main repository server.'
-                raise SystemExit(1)
-        except Exception as e:
-            print 'ERROR: Could not add PPA repository. Quitting...'
-            print e
-            raise SystemExit(1)
-
-        cache[qtgui].mark_install()
+        raise SystemExit(1)
 
     if not is_installed[sqlobj]:
         cache[sqlobj].mark_install()
