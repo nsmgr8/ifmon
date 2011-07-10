@@ -24,7 +24,7 @@ binfile = '/usr/bin/ifmon'
 cronsrc = os.path.join(install_path, 'resources/ifmon.cron')
 cronfile = '/etc/cron.d/ifmon'
 desktop_src = os.path.join(install_path, 'resources/ifmon.desktop')
-desktop_target = os.path.expanduser('~/Desktop/ifmon.desktop')
+desktop_target = os.path.expanduser('~/Desktop1/ifmon.desktop')
 dbpath = os.path.join(install_path, 'ifmon/db/ifmon.db')
 
 def install_ifmon():
@@ -77,7 +77,10 @@ def install_ifmon():
         shutil.copyfile(desktop_src, desktop_target)
         os.chmod(desktop_target, permission)
     except IOError as e:
-        print "Could not create a desktop shortcut", e
+        print "Warning: Could not create a desktop shortcut."
+        print e
+        print "You can make a desktop shortcut on your own, by just copying"
+        print "the file:`%s` to your desktop" % desktop_src
 
 def install_deps():
     import apt
