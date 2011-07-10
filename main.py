@@ -9,10 +9,6 @@
 #
 
 import sys
-import os
-
-pkgpath = os.path.dirname(os.path.realpath(__file__))
-sys.path.insert(0, pkgpath)
 
 from PySide.QtGui import QApplication, QMessageBox
 

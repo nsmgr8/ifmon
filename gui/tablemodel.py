@@ -8,7 +8,7 @@
 
 from datetime import datetime, timedelta
 
-from PySide.QtCore import (Qt, QAbstractTableModel)
+from PySide.QtCore import (Qt, QAbstractTableModel, QDateTime)
 
 from sqlobject import AND
 from ifmon.ifmon import Bandwidth, Settings, save_data
@@ -39,7 +39,7 @@ class BandwidthTableModel(QAbstractTableModel):
             col = index.column()
             d = self.bws[index.row()].at(col)
             return {
-                0: lambda x: x.strftime('%H:%M, %d-%m-%y'),
+                0: lambda x: QDateTime(x),
                 1: lambda x: str(x),
             }.get(col, lambda x: '%.2f %s' % smart_bytes(x))(d)
 
