@@ -39,7 +39,7 @@ class BandwidthTableModel(QAbstractTableModel):
             col = index.column()
             d = self.bws[index.row()].at(col)
             return {
-                0: lambda x: x.strftime('%H:%M, %d %b %Y'),
+                0: lambda x: x.strftime('%H:%M, %d-%m-%y'),
                 1: lambda x: str(x),
             }.get(col, lambda x: '%.2f %s' % smart_bytes(x))(d)
 
