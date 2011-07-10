@@ -9,7 +9,7 @@
 from datetime import timedelta, datetime
 import sys
 
-from PySide.QtCore import Qt, QTimer
+from PySide.QtCore import Qt, QTimer, QCoreApplication
 from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
 
 from sqlobject import dberrors
@@ -17,7 +17,6 @@ from sqlobject import dberrors
 from ui_mainwindow import Ui_MainWindow
 from aboutdialog import AboutDialog
 from tablemodel import BandwidthTableModel
-from ifmon.utils import smart_bytes
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -73,12 +72,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateTotal(self):
         if self.model.total['total'] > 0:
             stat = self.model.total
-            total = "%.2f %s" % smart_bytes(stat['total'])
-            received = "%.2f %s" % smart_bytes(stat['received'])
-            transmitted = "%.2f %s" % smart_bytes(stat['transmitted'])
-            self.labelTotal.setText("Total: <b>%s</b> (<b>%s</b> received, "
-                                    "<b>%s</b> transmitted)" %
-                                    (total, received, transmitted))
+            total = BandwidthTableModel.smart_bytes(stat['total'])
+            received = BandwidthTableModel.smart_bytes(stat['received'])
+            transmitted = BandwidthTableModel.smart_bytes(stat['transmitted'])
+            self.labelTotal.setText(QCoreApplication.translate("ifmon",
+                "Total: <b>%s</b> (<b>%s</b> received, <b>%s</b> transmitted)")
+                                    % (total, received, transmitted))
 
     def setAutoUpdate(self, state):
         if state == Qt.Unchecked:

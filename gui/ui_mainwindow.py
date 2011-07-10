@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Fri Jul  8 16:56:55 2011
+# Created: Mon Jul 11 00:47:55 2011
 #      by: pyside-uic 0.2.9 running on PySide 1.0.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,8 +13,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 500)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(600, 500))
-        MainWindow.setMaximumSize(QtCore.QSize(650, 16777215))
+        MainWindow.setMaximumSize(QtCore.QSize(750, 16777215))
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
@@ -91,9 +96,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Bandwidth Monitor", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "From", None, QtGui.QApplication.UnicodeUTF8))
-        self.dateFrom.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd/MM/yyyy", None, QtGui.QApplication.UnicodeUTF8))
+        self.dateFrom.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd MMM, yyyy", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "To", None, QtGui.QApplication.UnicodeUTF8))
-        self.dateTo.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd/MM/yyyy", None, QtGui.QApplication.UnicodeUTF8))
+        self.dateTo.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd MMM, yyyy", None, QtGui.QApplication.UnicodeUTF8))
         self.checkAuto.setText(QtGui.QApplication.translate("MainWindow", "&Auto update", None, QtGui.QApplication.UnicodeUTF8))
         self.updateButton.setText(QtGui.QApplication.translate("MainWindow", "&Update Now", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotal.setText(QtGui.QApplication.translate("MainWindow", "Total: 0B", None, QtGui.QApplication.UnicodeUTF8))
