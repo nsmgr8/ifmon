@@ -53,8 +53,7 @@ package manager.
     1. pyqt4 >= 4.6
     2. python SQLObject > 0.7
 
-After satisfying the requirements you can either double click the **main.py**
-file or run it from the commandline via::
+After satisfying the requirements you can install it from the commandline via::
 
     $ cd ~/Downloads/ifmon
     $ sudo python install_other.py
