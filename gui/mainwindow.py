@@ -49,7 +49,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about)
 
         self.timer = QTimer()
-        self.timer.setInterval(10000)
+        self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updateUsage)
         self.checkAuto.setCheckState(self.model.settings.auto_update and \
                                      Qt.Checked or Qt.Unchecked)

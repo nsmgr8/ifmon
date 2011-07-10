@@ -18,7 +18,7 @@ class BandwidthTableModel(QAbstractTableModel):
 
     def __init__(self, parent=None):
         super(BandwidthTableModel, self).__init__(parent)
-        self.header = ['From', 'To', 'Recieved', 'Transmitted', 'Total']
+        self.header = ['From', 'Uptime', 'Recieved', 'Transmitted', 'Total']
         for settings in Settings.select():
             self.settings = settings
             break
@@ -38,10 +38,10 @@ class BandwidthTableModel(QAbstractTableModel):
         if role == Qt.DisplayRole:
             col = index.column()
             d = self.bws[index.row()].at(col)
-            if col > 1:
-                return '%.2f %s' % smart_bytes(d)
-            else:
-                return d.strftime('%H:%M, %d %b %Y')
+            return {
+                0: lambda x: x.strftime('%H:%M, %d %b %Y'),
+                1: lambda x: str(x),
+            }.get(col, lambda x: '%.2f %s' % smart_bytes(x))(d)
 
         if role == Qt.TextAlignmentRole:
             return Qt.AlignRight

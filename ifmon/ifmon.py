@@ -33,9 +33,12 @@ class Bandwidth(SQLObject):
     def total(self):
         return self.received + self.transmitted
 
+    def uptime(self):
+        return self.retrieved_at - self.booted_at
+
     def at(self, index):
         return {0: self.booted_at,
-                1: self.retrieved_at,
+                1: self.uptime(),
                 2: self.received,
                 3: self.transmitted,
                 4: self.total()}.get(index)
