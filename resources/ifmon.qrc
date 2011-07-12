@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>ifmon.png</file>
+        <file>laptop.png</file>
+        <file>red_arrow.png</file>
+        <file>green_arrow.png</file>
     </qresource>
 </RCC>

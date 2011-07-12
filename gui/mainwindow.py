@@ -33,6 +33,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     'Could not access database.\nERROR: %s' % e)
             sys.exit(QApplication.exit())
 
+        self.tabWidget.setTabText(0, 'Table')
+        self.tabWidget.setTabText(1, 'Animation')
         self.tableView.setModel(self.model)
         self.tableView.resizeColumnToContents(0)
         self.tableView.resizeColumnToContents(1)
@@ -50,6 +52,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timer = QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updateUsage)
+        self.timer.timeout.connect(self.graphicsView.animate)
         self.checkAuto.setCheckState(self.model.settings.auto_update and \
                                      Qt.Checked or Qt.Unchecked)
 

@@ -62,13 +62,18 @@ def save_data():
                                       microseconds=boot_time.microsecond)
     bws = Bandwidth.select(Bandwidth.q.booted_at==boot_time)
     for bw in bws:
+        dr = received - bw.received
+        dt = received - bw.transmitted
         bw.received = received
         bw.transmitted = transmitted
         bw.retrieved_at = now
         break
     else:
+        dr = received
+        dt = transmitted
         Bandwidth(booted_at=boot_time, retrieved_at=now, received=received,
                   transmitted=transmitted)
+    return dr, dt
 
 
 if __name__ == '__main__':

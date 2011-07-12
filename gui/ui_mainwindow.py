@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainwindow.ui'
+# Form implementation generated from reading ui file 'gui/mainwindow.ui'
 #
-# Created: Mon Jul 11 00:47:55 2011
+# Created: Tue Jul 12 23:54:19 2011
 #      by: pyside-uic 0.2.9 running on PySide 1.0.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,9 +50,30 @@ class Ui_MainWindow(object):
         self.updateButton.setObjectName("updateButton")
         self.horizontalLayout.addWidget(self.updateButton)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        self.tableView = QtGui.QTableView(self.centralwidget)
+        self.tabWidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tabWidgetPage1 = QtGui.QWidget()
+        self.tabWidgetPage1.setObjectName("tabWidgetPage1")
+        self.gridLayout_2 = QtGui.QGridLayout(self.tabWidgetPage1)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.tableView = QtGui.QTableView(self.tabWidgetPage1)
         self.tableView.setObjectName("tableView")
-        self.gridLayout.addWidget(self.tableView, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.tableView, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tabWidgetPage1, "")
+        self.tab = QtGui.QWidget()
+        self.tab.setObjectName("tab")
+        self.gridLayout_3 = QtGui.QGridLayout(self.tab)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.graphicsView = GfxView(self.tab)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
+        self.graphicsView.setSizePolicy(sizePolicy)
+        self.graphicsView.setObjectName("graphicsView")
+        self.gridLayout_3.addWidget(self.graphicsView, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab, "")
+        self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         self.labelTotal = QtGui.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -87,6 +108,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu_Help.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.action_Quit, QtCore.SIGNAL("triggered()"), MainWindow.close)
         QtCore.QObject.connect(self.action_Update_Now, QtCore.SIGNAL("triggered()"), self.updateButton.click)
         QtCore.QObject.connect(self.dateFrom, QtCore.SIGNAL("editingFinished()"), self.action_Update_Now.trigger)
@@ -101,6 +123,7 @@ class Ui_MainWindow(object):
         self.dateTo.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd MMM, yyyy", None, QtGui.QApplication.UnicodeUTF8))
         self.checkAuto.setText(QtGui.QApplication.translate("MainWindow", "&Auto update", None, QtGui.QApplication.UnicodeUTF8))
         self.updateButton.setText(QtGui.QApplication.translate("MainWindow", "&Update Now", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Page", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotal.setText(QtGui.QApplication.translate("MainWindow", "Total: 0B", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_Help.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
@@ -110,3 +133,4 @@ class Ui_MainWindow(object):
         self.action_Update_Now.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+U", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
 
+from gfx.gfxview import GfxView
