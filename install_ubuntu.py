@@ -26,8 +26,12 @@ cronfile = '/etc/cron.d/ifmon'
 desktop_src = os.path.join(install_path, 'resources/ifmon.desktop')
 desktop_target = os.path.expanduser('~/Desktop/ifmon.desktop')
 dbpath = os.path.join(install_path, 'ifmon/db/ifmon.db')
+tmpdbpath = '/tmp/temp.ifmon.db'
 
 def install_ifmon():
+    if os.path.exists(dbpath):
+        shutil.copyfile(dbpath, tmpdbpath)
+
     pkgpath = os.path.dirname(os.path.abspath(__file__))
     if os.path.exists(install_path):
         try:
@@ -60,6 +64,9 @@ def install_ifmon():
         os.symlink(f, s)
 
 
+    if os.path.exists(tmpdbpath):
+        shutil.copyfile(tmpdbpath, dbpath)
+        os.remove(tmpdbpath)
     if not os.path.exists(dbpath):
         if not os.path.exists(os.path.dirname(dbpath)):
             os.makedirs(os.path.dirname(dbpath))
