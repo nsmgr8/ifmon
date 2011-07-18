@@ -73,16 +73,10 @@ def install_ifmon():
         with open(dbpath, 'w'):
             pass
 
-    permission = stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR | stat.S_IRGRP | \
-                 stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH | stat.S_IWOTH | \
-                 stat.S_IWGRP
-    os.chmod(mainfile, permission)
-    os.chmod(dbpath, permission)
-    os.chmod(os.path.dirname(dbpath), permission)
-
+    os.system('chmod -R 0777 %s' % install_path)
     try:
         shutil.copyfile(desktop_src, desktop_target)
-        os.chmod(desktop_target, permission)
+        os.system('chmod 0777 %s' % desktop_target)
     except IOError as e:
         print "Warning: Could not create a desktop shortcut."
         print e
