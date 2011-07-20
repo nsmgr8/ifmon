@@ -10,7 +10,11 @@
 
 import sys
 
-from gui import app
 
 if __name__ == '__main__':
+    if '-c' in sys.argv:
+        from cli import app
+    else:
+        from gui import app
     app.main(sys.argv)
+

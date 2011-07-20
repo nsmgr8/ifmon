@@ -13,7 +13,6 @@ import subprocess
 import glob
 import shutil
 import compileall
-import stat
 import sys
 
 from ifmon.utils import smart_bytes
@@ -99,9 +98,10 @@ def install_deps():
     cache = apt.Cache(apt.progress.text.OpProgress())
     qtgui = 'python-pyside.qtgui'
     sqlobj = 'python-sqlobject'
-    version = {qtgui: '1.0.3', sqlobj: '0.7'}
+    urwid = 'python-urwid'
+    version = {qtgui: '1.0.3', sqlobj: '0.7', urwid: '0.9'}
     is_installed = {}
-    for p in (qtgui, sqlobj):
+    for p in (qtgui, sqlobj, urwid):
         is_installed[p] = cache[p].is_installed and \
                           check_version(cache[p], version[p])
 
@@ -131,6 +131,8 @@ def install_deps():
 
     if not is_installed[sqlobj]:
         cache[sqlobj].mark_install()
+    if not is_installed[urwid]:
+        cache[urwid].mark_install()
 
     if cache.install_count > 0:
         print "Need to download %.2f %s." \

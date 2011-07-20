@@ -24,7 +24,7 @@ class Bandwidth(SQLObject):
     transmitted = IntCol()
 
     class sqlmeta:
-        defaultOrder = "booted_at"
+        defaultOrder = "-booted_at"
 
     def __repr__(self):
         return '<%s - %s>' % (self.retrieved_at - self.booted_at,
