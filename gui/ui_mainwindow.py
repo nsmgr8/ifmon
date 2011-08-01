@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Mon Jul 11 00:47:55 2011
-#      by: pyside-uic 0.2.9 running on PySide 1.0.3
+# Created: Mon Aug  1 01:56:59 2011
+#      by: pyside-uic 0.2.9 running on PySide 1.0.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -43,12 +43,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.dateTo)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.checkAuto = QtGui.QCheckBox(self.centralwidget)
-        self.checkAuto.setObjectName("checkAuto")
-        self.horizontalLayout.addWidget(self.checkAuto)
-        self.updateButton = QtGui.QPushButton(self.centralwidget)
-        self.updateButton.setObjectName("updateButton")
-        self.horizontalLayout.addWidget(self.updateButton)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.tableView = QtGui.QTableView(self.centralwidget)
         self.tableView.setObjectName("tableView")
@@ -63,7 +57,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.labelTotal, 2, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 23))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -79,8 +73,6 @@ class Ui_MainWindow(object):
         self.action_Update_Now.setObjectName("action_Update_Now")
         self.actionAbout = QtGui.QAction(MainWindow)
         self.actionAbout.setObjectName("actionAbout")
-        self.menu_File.addAction(self.action_Update_Now)
-        self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
         self.menu_Help.addAction(self.actionAbout)
         self.menubar.addAction(self.menu_File.menuAction())
@@ -88,7 +80,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.action_Quit, QtCore.SIGNAL("triggered()"), MainWindow.close)
-        QtCore.QObject.connect(self.action_Update_Now, QtCore.SIGNAL("triggered()"), self.updateButton.click)
         QtCore.QObject.connect(self.dateFrom, QtCore.SIGNAL("editingFinished()"), self.action_Update_Now.trigger)
         QtCore.QObject.connect(self.dateTo, QtCore.SIGNAL("editingFinished()"), self.action_Update_Now.trigger)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -99,8 +90,6 @@ class Ui_MainWindow(object):
         self.dateFrom.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd MMM, yyyy", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "To", None, QtGui.QApplication.UnicodeUTF8))
         self.dateTo.setDisplayFormat(QtGui.QApplication.translate("MainWindow", "dd MMM, yyyy", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkAuto.setText(QtGui.QApplication.translate("MainWindow", "&Auto update", None, QtGui.QApplication.UnicodeUTF8))
-        self.updateButton.setText(QtGui.QApplication.translate("MainWindow", "&Update Now", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotal.setText(QtGui.QApplication.translate("MainWindow", "Total: 0B", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_Help.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
