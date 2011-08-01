@@ -1,7 +1,8 @@
 Bandwidth Monitor (ifmon)
 =========================
 
-:author: M Nasimul Haque
+:Author: M Nasimul Haque
+:Web: http://www.nasim.me.uk
 
 A simple desktop viewer for your Linux network bandwidth usage.
 

@@ -85,20 +85,6 @@
         </property>
        </spacer>
       </item>
-      <item>
-       <widget class="QCheckBox" name="checkAuto">
-        <property name="text">
-         <string>&amp;Auto update</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="updateButton">
-        <property name="text">
-         <string>&amp;Update Now</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item row="1" column="0">
@@ -163,15 +149,13 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="action_Update_Now"/>
-    <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -228,22 +212,6 @@
     <hint type="destinationlabel">
      <x>299</x>
      <y>249</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>action_Update_Now</sender>
-   <signal>triggered()</signal>
-   <receiver>updateButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>537</x>
-     <y>48</y>
     </hint>
    </hints>
   </connection>

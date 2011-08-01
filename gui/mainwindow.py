@@ -9,7 +9,7 @@
 from datetime import timedelta, datetime
 import sys
 
-from PySide.QtCore import Qt, QTimer, QCoreApplication
+from PySide.QtCore import QTimer, QCoreApplication
 from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
 
 from sqlobject import dberrors
@@ -45,16 +45,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.statusBar().addWidget(self.labelTotal)
         self.updateTotal()
 
-        self.updateButton.clicked.connect(self.updateUsage)
-        self.checkAuto.stateChanged.connect(self.setAutoUpdate)
         self.actionAbout.triggered.connect(self.about)
 
         self.timer = QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updateUsage)
         self.timer.timeout.connect(self.graphicsView.animate)
-        self.checkAuto.setCheckState(self.model.settings.auto_update and \
-                                     Qt.Checked or Qt.Unchecked)
+        self.timer.start()
 
     def updateUsage(self):
         d = self.dateFrom.date()
@@ -81,20 +78,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.labelTotal.setText(QCoreApplication.translate("ifmon",
                 "Total: <b>%s</b> (<b>%s</b> received, <b>%s</b> transmitted)")
                                     % (total, received, transmitted))
-
-    def setAutoUpdate(self, state):
-        if state == Qt.Unchecked:
-            if self.timer.isActive():
-                self.timer.stop()
-            self.action_Update_Now.setEnabled(True)
-            self.updateButton.setEnabled(True)
-            self.model.settings.auto_update = False
-        else:
-            if not self.timer.isActive():
-                self.timer.start()
-            self.model.settings.auto_update = True
-            self.action_Update_Now.setEnabled(False)
-            self.updateButton.setEnabled(False)
 
     def about(self):
         AboutDialog(self).exec_()
