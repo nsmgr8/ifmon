@@ -18,10 +18,11 @@ def get_bytes():
     received, transmitted = 0, 0
     devices = 'eth', 'wlan', 'ppp'
     for line in devs.splitlines()[2:]:
-        cols = line.split()
-        if any([cols[0].startswith(dev) for dev in devices]):
-            received += int(cols[1])
-            transmitted += int(cols[9])
+        cols = line.split(':')
+        if any([cols[0].strip().startswith(dev) for dev in devices]):
+            cols = cols[1].split()
+            received += int(cols[0])
+            transmitted += int(cols[8])
 
     total = received + transmitted
     return total, received, transmitted
