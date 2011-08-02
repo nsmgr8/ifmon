@@ -45,7 +45,6 @@ class Bandwidth(SQLObject):
 
 class Settings(SQLObject):
     start = DateTimeCol()
-    auto_update = BoolCol()
 
 def setup_db(dbpath=DBPATH):
     connection = connectionForURI('sqlite:' + dbpath)
