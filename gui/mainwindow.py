@@ -9,7 +9,7 @@
 from datetime import timedelta, datetime
 import sys
 
-from PySide.QtCore import Qt, QTimer, QCoreApplication
+from PySide.QtCore import QTimer, QDateTime, QLocale
 from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
 
 from sqlobject import dberrors
@@ -40,7 +40,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.dateFrom.setDate(self.model.settings.start)
         self.dateTo.setDate(self.model.settings.start + timedelta(days=29))
-        self.statusBar().addWidget(self.labelTotal)
         self.updateTotal()
 
         self.actionAbout.triggered.connect(self.about)
@@ -72,9 +71,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             total = BandwidthTableModel.smart_bytes(stat['total'])
             received = BandwidthTableModel.smart_bytes(stat['received'])
             transmitted = BandwidthTableModel.smart_bytes(stat['transmitted'])
-            self.labelTotal.setText(QCoreApplication.translate("ifmon",
-                "Total: <b>%s</b> (<b>%s</b> received, <b>%s</b> transmitted)")
-                                    % (total, received, transmitted))
+            self.labelTotal.setText(total)
+            self.labelTotalReceived.setText(received)
+            self.labelTotalTransmitted.setText(transmitted)
+            self.labelUptime.setText(BandwidthTableModel.formatUptime(stat['uptime']))
+
+        tps = BandwidthTableModel.smart_bytes(self.model.tps)
+        rps = BandwidthTableModel.smart_bytes(self.model.rps)
+        self.labelRps.setText("%s/s" % rps)
+        self.labelTps.setText("%s/s" % tps)
+        now = QLocale().toString(QDateTime.currentDateTime(), u'dd MMMM, yyyy hh:mm:ss')
+        self.labelTime.setText(now)
 
     def about(self):
         AboutDialog(self).exec_()

@@ -101,7 +101,7 @@ class MainView(urwid.Frame):
             transmitted += bw.transmitted
             uptime = uptime + bw.uptime()
         self.totaldata = {'total': received+transmitted, 'received': received,
-                'transmitted': transmitted, 'uptime': uptime}
+                          'transmitted': transmitted, 'uptime': uptime}
         self.reset()
 
     def reset(self):
