@@ -78,7 +78,7 @@ class MainView(urwid.Frame):
         else:
             now = datetime.datetime.now()
             start = datetime.datetime(year=now.year, month=now.month, day=1)
-            self.settings = Settings(start=start, auto_update=False)
+            self.settings = Settings(start=start)
 
         self.populate()
 
