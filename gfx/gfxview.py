@@ -21,12 +21,6 @@ class GfxView(QtGui.QGraphicsView):
         self.scene.addItem(box)
         box.setOffset(-64, -64)
 
-        self.scale(.5, .5)
-
-#        self.animator = QtCore.QTimer()
-#        self.animator.timeout.connect(self.animate)
-#        self.animator.start(1000)
-
     def animate(self):
         random.shuffle(self.in_items)
         random.shuffle(self.out_items)
