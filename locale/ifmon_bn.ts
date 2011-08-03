@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="bn">
+<!DOCTYPE TS>
+<TS version="2.0" language="bn">
 <context>
     <name>@default</name>
     <message>
@@ -77,52 +78,112 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="gui/mainwindow.ui" line="91"/>
         <source>&amp;Auto update</source>
-        <translation>স্বয়ংক্রিয় আপডেট</translation>
+        <translation type="obsolete">স্বয়ংক্রিয় আপডেট</translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="164"/>
+        <location filename="gui/mainwindow.ui" line="304"/>
         <source>&amp;Update Now</source>
         <translation>আপডেট করুন</translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="115"/>
-        <source>Total: 0B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/mainwindow.ui" line="138"/>
+        <location filename="gui/mainwindow.ui" line="280"/>
         <source>&amp;File</source>
         <translation>ফাইল</translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="146"/>
+        <location filename="gui/mainwindow.ui" line="286"/>
         <source>&amp;Help</source>
         <translation>সাহায্য</translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="156"/>
+        <location filename="gui/mainwindow.ui" line="296"/>
         <source>Quit</source>
         <translation>বন্ধ করুন</translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="159"/>
+        <location filename="gui/mainwindow.ui" line="299"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="167"/>
+        <location filename="gui/mainwindow.ui" line="307"/>
         <source>Ctrl+U</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="gui/mainwindow.ui" line="172"/>
+        <location filename="gui/mainwindow.ui" line="312"/>
         <source>About</source>
         <translation>বিষয়ে</translation>
     </message>
     <message>
         <location filename="gui/mainwindow.ui" line="68"/>
         <source>dd MMM, yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="100"/>
+        <source>&lt;b&gt;In&lt;/b&gt;</source>
+        <translation>&lt;b&gt;আগমণ&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="112"/>
+        <source>Receiving at</source>
+        <translation>আগমণের হার</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="174"/>
+        <source>0 B/s</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="129"/>
+        <source>Total received</source>
+        <translation>মোট এসেছে</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="191"/>
+        <source>0 B</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="164"/>
+        <source>Transmitting at</source>
+        <translation>নির্গমনের হার</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="181"/>
+        <source>Total transmitted</source>
+        <translation>মোট নির্গমন</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="206"/>
+        <source>&lt;b&gt;Total Usage&lt;/b&gt;</source>
+        <translation>&lt;b&gt;সর্বমোট ব্যবহার&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="216"/>
+        <source>&lt;b&gt;0 B&lt;/b&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="229"/>
+        <source>Total uptime</source>
+        <translation>সর্বমোট চালুর সময়</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="239"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="261"/>
+        <source>Time</source>
+        <translation>সময়</translation>
+    </message>
+    <message>
+        <location filename="gui/mainwindow.ui" line="152"/>
+        <source>&lt;b&gt;Out&lt;/b&gt;</source>
+        <translation>&lt;b&gt;নির্গমন&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -130,7 +191,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="gui/mainwindow.py" line="81"/>
         <source>Total: &lt;b&gt;%s&lt;/b&gt; (&lt;b&gt;%s&lt;/b&gt; received, &lt;b&gt;%s&lt;/b&gt; transmitted)</source>
-        <translation>সর্বমোট: &lt;b&gt;%s&lt;/b&gt; (&lt;b&gt;%s&lt;/b&gt; এসেছে, &lt;b&gt;%s&lt;/b&gt; গিয়েছে)</translation>
+        <translation type="obsolete">সর্বমোট: &lt;b&gt;%s&lt;/b&gt; (&lt;b&gt;%s&lt;/b&gt; এসেছে, &lt;b&gt;%s&lt;/b&gt; গিয়েছে)</translation>
     </message>
     <message>
         <location filename="gui/tablemodel.py" line="23"/>

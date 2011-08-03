@@ -88,7 +88,7 @@ class BandwidthTableModel(QAbstractTableModel):
                 return Qt.AlignRight
 
     def populateData(self, start=None, end=None):
-        save_data()
+        self.rps, self.tps = save_data()
         if not start:
             start = self.settings.start
         else:
@@ -100,10 +100,12 @@ class BandwidthTableModel(QAbstractTableModel):
             query = Bandwidth.q.booted_at >= start
         self.bws = list(Bandwidth.select(query))
         received, transmitted = 0, 0
+        uptime = timedelta(days=0)
         for bw in self.bws:
             received += bw.received
             transmitted += bw.transmitted
+            uptime = uptime + bw.uptime()
         self.total = {'total': received+transmitted, 'received': received,
-                      'transmitted': transmitted}
+                      'transmitted': transmitted, 'uptime': uptime}
         self.reset()
 

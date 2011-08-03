@@ -11,7 +11,7 @@ import logging
 from datetime import timedelta
 
 from sqlobject import connectionForURI, sqlhub
-from sqlobject import SQLObject, DateTimeCol, IntCol, BoolCol
+from sqlobject import SQLObject, DateTimeCol, IntCol
 
 from utils import get_uptime, get_bytes
 
@@ -62,16 +62,17 @@ def save_data():
     bws = Bandwidth.select(Bandwidth.q.booted_at==boot_time)
     for bw in bws:
         dr = received - bw.received
-        dt = received - bw.transmitted
+        dt = transmitted - bw.transmitted
         bw.received = received
         bw.transmitted = transmitted
         bw.retrieved_at = now
         break
     else:
-        dr = received
-        dt = transmitted
+        dr, dt = received, transmitted
         Bandwidth(booted_at=boot_time, retrieved_at=now, received=received,
                   transmitted=transmitted)
+    return dr, dt
+
     return dr, dt
 
 
