@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui/mainwindow.ui'
 #
-# Created: Tue Aug  2 16:01:57 2011
+# Created: Wed Aug  3 14:02:15 2011
 #      by: pyside-uic 0.2.9 running on PySide 1.0.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -166,11 +166,7 @@ class Ui_MainWindow(object):
         self.labelRps.setText(QtGui.QApplication.translate("MainWindow", "0 B/s", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Total received", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTotalReceived.setText(QtGui.QApplication.translate("MainWindow", "0 B", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Out</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "<b>Out</b>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_9.setText(QtGui.QApplication.translate("MainWindow", "Transmitting at", None, QtGui.QApplication.UnicodeUTF8))
         self.labelTps.setText(QtGui.QApplication.translate("MainWindow", "0 B/s", None, QtGui.QApplication.UnicodeUTF8))
         self.label_11.setText(QtGui.QApplication.translate("MainWindow", "Total transmitted", None, QtGui.QApplication.UnicodeUTF8))
