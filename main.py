@@ -9,7 +9,9 @@
 #
 
 import sys
+import signal
 
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 if __name__ == '__main__':
     if '-c' in sys.argv:
