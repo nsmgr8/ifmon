@@ -9,13 +9,7 @@ A simple desktop viewer for your Linux network bandwidth usage.
 Screenshot
 ==========
 
-KDE (Kubuntu)
-
-.. image:: http://farm7.static.flickr.com/6035/5915551557_6b4dc283b4.jpg
-
-Gnome (Ubuntu)
-
-.. image:: http://farm6.static.flickr.com/5078/5915551545_ba035038a5.jpg
+.. image:: https://lh3.googleusercontent.com/-bmYNXSV0xJU/Tj0nmYTjL8I/AAAAAAAAAmc/E5i14-ty0Yk/s1024/Screenshot.png
 
 Requirements
 ============
@@ -39,11 +33,14 @@ and greater). To install it just open up a terminal and run the following
 commands.::
 
     $ cd ~/Downloads/ifmon/
-    $ sudo python install_ubuntu.py
+    $ ./install_ubuntu.sh
 
 This will install all the dependencies and ifmon itself. After a successful
 installation, you can run ifmon either from the command line through
 **ifmon** command or double click the shortcut installed on your desktop.
+
+There is a text-based UI available also for terminal-environment. You can run
+it via the command ``ifmon -c``.
 
 Other Linux
 -----------
@@ -52,7 +49,8 @@ For other linux distributions you need to install the following from your
 package manager.
 
     1. pyside >= 1.0.3
-    2. python SQLObject > 0.7
+    2. python SQLObject >= 0.7
+    3. python urwid >= 0.9 
 
 After satisfying the requirements you can either double click the **main.py**
 file or run it from the commandline via::

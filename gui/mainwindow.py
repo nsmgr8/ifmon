@@ -10,7 +10,7 @@ from datetime import timedelta, datetime
 import sys
 
 from PySide.QtCore import QTimer, QDateTime, QLocale
-from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon
+from PySide.QtGui import QMainWindow, QMessageBox, QApplication, QIcon, QHeaderView
 
 from sqlobject import dberrors
 
@@ -34,8 +34,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             sys.exit(QApplication.exit())
 
         self.tableView.setModel(self.model)
-        self.tableView.resizeColumnToContents(0)
-        self.tableView.resizeColumnToContents(1)
+        self.tableView.horizontalHeader().setResizeMode(QHeaderView.Stretch)
+        self.tableView.horizontalHeader().setResizeMode(0, QHeaderView.ResizeToContents)
         self.tableView.setAlternatingRowColors(True)
 
         self.dateFrom.setDate(self.model.settings.start)
@@ -63,8 +63,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             sys.exit(QApplication.exit())
 
         self.updateTotal()
-        self.tableView.resizeColumnToContents(0)
-        self.tableView.resizeColumnToContents(1)
 
     def updateTotal(self):
         if self.model.total['total'] > 0:
