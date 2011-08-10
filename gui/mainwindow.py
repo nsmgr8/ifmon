@@ -64,15 +64,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.updateTotal()
 
     def updateTotal(self):
-        if self.model.total['total'] > 0:
-            stat = self.model.total
-            total = BandwidthTableModel.smart_bytes(stat['total'])
-            received = BandwidthTableModel.smart_bytes(stat['received'])
-            transmitted = BandwidthTableModel.smart_bytes(stat['transmitted'])
-            self.labelTotal.setText(total)
-            self.labelTotalReceived.setText(received)
-            self.labelTotalTransmitted.setText(transmitted)
-            self.labelUptime.setText(BandwidthTableModel.formatUptime(stat['uptime']))
+        stat = self.model.total
+        total = BandwidthTableModel.smart_bytes(stat['total'])
+        received = BandwidthTableModel.smart_bytes(stat['received'])
+        transmitted = BandwidthTableModel.smart_bytes(stat['transmitted'])
+        self.labelTotal.setText(total)
+        self.labelTotalReceived.setText(received)
+        self.labelTotalTransmitted.setText(transmitted)
+        self.labelUptime.setText(BandwidthTableModel.formatUptime(stat['uptime']))
 
         self.graphicsView.animate(self.model.rps > 0, self.model.tps > 0)
         tps = BandwidthTableModel.smart_bytes(self.model.tps)
