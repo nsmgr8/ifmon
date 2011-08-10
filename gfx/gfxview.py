@@ -19,6 +19,7 @@ class GfxView(QtGui.QGraphicsView):
 
         box = QtGui.QGraphicsPixmapItem(QtGui.QPixmap(':/laptop.png'))
         self.scene.addItem(box)
+        self.scale(.5, .5)
         box.setOffset(-64, -64)
 
     def animate(self):

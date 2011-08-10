@@ -33,8 +33,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     'Could not access database.\nERROR: %s' % e)
             sys.exit(QApplication.exit())
 
-        self.tabWidget.setTabText(0, 'Table')
-        self.tabWidget.setTabText(1, 'Animation')
         self.tableView.setModel(self.model)
         self.tableView.resizeColumnToContents(0)
         self.tableView.resizeColumnToContents(1)
