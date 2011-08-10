@@ -22,12 +22,14 @@ class GfxView(QtGui.QGraphicsView):
         self.scale(.5, .5)
         box.setOffset(-64, -64)
 
-    def animate(self):
+    def animate(self, has_in, has_out):
         random.shuffle(self.in_items)
         random.shuffle(self.out_items)
         for i in range(self.n / 3):
-            self.in_items[i].animate()
-            self.out_items[i].animate()
+            if has_in:
+                self.in_items[i].animate()
+            if has_out:
+                self.out_items[i].animate()
 
     def populate(self):
         n = 10

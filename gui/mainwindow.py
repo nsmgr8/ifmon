@@ -47,7 +47,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timer = QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updateUsage)
-        self.timer.timeout.connect(self.graphicsView.animate)
         self.timer.start()
 
     def updateUsage(self):
@@ -75,6 +74,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.labelTotalTransmitted.setText(transmitted)
             self.labelUptime.setText(BandwidthTableModel.formatUptime(stat['uptime']))
 
+        self.graphicsView.animate(self.model.rps > 0, self.model.tps > 0)
         tps = BandwidthTableModel.smart_bytes(self.model.tps)
         rps = BandwidthTableModel.smart_bytes(self.model.rps)
         self.labelRps.setText("%s/s" % rps)
